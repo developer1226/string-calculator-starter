@@ -10,8 +10,7 @@ class StringCalculator {
     	else 
     	{
     		int sum = 0;
-    		if(input.contains(",") && !input.contains("\n")
-) 
+    		if((input.contains(",") && !input.contains("\n")) && !input.contains(";")) 
     		{
     			String s[] = input.split(",");
     			for(int i = 0 ; i< s.length ; i++)
@@ -19,11 +18,11 @@ class StringCalculator {
     				sum += Integer.valueOf(s[i]);	
     			}	
     		}
-    		else if(!input.contains(","))
+    		else if(!input.contains(",") && !input.contains(";"))
     		{
     			sum = Integer.valueOf(input);
     		}
-    		else 
+    		else if(input.contains("\n") && !input.contains(";"))
     		{
     			String temp = input.replace("\n", "");
     			String s[] = temp.split(",");
@@ -47,8 +46,19 @@ class StringCalculator {
     				}	
     			}
     		}
+			else
+			{
+				String temp = input.replaceAll("[^0-9" + 59 + "]", ";");
+				String s[] = temp.split(";");
+				for (int i = 0; i < s.length; i++) 
+				{
+					if (!s[i].isEmpty()) 
+					{
+						sum += Integer.valueOf(s[i]);
+					}
+				}
+			}
     		return sum;
     	}
     }
-
 }

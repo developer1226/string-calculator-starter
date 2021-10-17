@@ -41,4 +41,11 @@ class StringCalculatorShould
     	StringCalculator stringCalculator = new StringCalculator();
         assertEquals(6, stringCalculator.add("1\n2,3"));
     }
+    
+    @Test
+    public void string_with_different_delimiter_should_return_number_as_sum() 
+    {
+    	StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("//;\\n1;2"));
+    }
 }
